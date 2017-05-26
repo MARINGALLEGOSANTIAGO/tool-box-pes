@@ -1,0 +1,96 @@
+{% extends "home_base.html"%}
+{% block title %}Perfil Usuario {% endblock %}
+{% block container %}
+{% if error %}
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span>
+  </button>
+  <strong>Error:</strong> {{ error }}
+</div>
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+
+<h2><div align ="left">Solicitar servicio</div></h2>
+<HR width=100% align="center">
+<h4><div align ="left">Diligenciando el formulario y haciendo clic en enviar, tu servicio habrá sido solicitado. Revisa muy bien la información diligenciada antes de enviarla ya que si el equipo operativo de TOOL BOX PES requiere contactarte y no lo consigue, tu servicio no será atendido.</div></h4>
+<div class="col-xs-3 col-md-3">
+</div>
+<div class="col-xs-9 col-md-9">   
+<div class="row">
+  <form class="form-horizontal" method="POST">
+    {% csrf_token %}
+        <div class="form-group">
+          <div class="col-xs-10 col-md-8">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="firstName" type="text" id="input-NombreApellido" class="form-control" placeholder="Nombres y apellidos" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-10 col-md-8">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <input name="email" type="email" id="input-email" class="form-control" placeholder="Email" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-10 col-md-8">
+            <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+            <input name="phone" type="text" id="input-Telefono" class="form-control" placeholder="Teléfono de contacto" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-10 col-md-8">
+            <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+            <input name="address" type="text" id="input-Direccion" class="form-control" placeholder="Dirección y ciudad del servicio" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-10 col-md-8">
+            <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i></span>
+            <input name="document_number" type="text" id="input-NumeroId" class="form-control" placeholder="Número de Identificación" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-10 col-md-8">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+              <textarea class="form-control" id="input-comment" name="comment" type="text" placeholder="Detalle servicio a solicitar, fecha y hora" required></textarea>
+          </div>
+          </div>
+        </div>
+
+        <div class="col-xs-10 col-md-8">
+          <button class="btn btn-success" type="submit">
+          <span class="glyphicon glyphicon-share-alt"></span> Enviar Solicitud</button>
+          </div>
+
+    </form>
+    <br>
+<br>
+</div>
+</div>
+
+
+<B>*Detalle servicio a solicitar, fecha y hora:</B> Explique muy bien que necesita y luego háganos saber la fecha y la hora o el rango de horas en el cual debe llegar la persona o personas que le prestarán su servicio.
+<B>Seguridad:</B> Antes de enviar el servicio nos estaremos contactando con usted y le daremos un código de seguridad.
+        </div><!-- /.col-lg-4 -->
+
+{% endblock %}po

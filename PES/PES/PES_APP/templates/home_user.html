@@ -1,0 +1,82 @@
+{% extends "home_base.html"%}
+{% block title %}Perfil Usuario {% endblock %}
+{% block container %}
+<br>
+<br>
+<br>
+<br>
+<center><h2>Bienvenido(a) {{ user.username }}!</h2></center>
+<br>
+  <div class="row">
+  <div class="col-md-2 col-xs-12"> 
+  </div>
+  <center>
+  <div class="col-md-8 col-xs-12">           
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Nombre de Usuario</th>
+        <th>{{ user.username }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Tipo de documento</th> 
+        <td> {{ user.profile_user.get_document_type_display }} </td>
+      </tr>
+      <tr>
+        <th scope="row">Número de documento</th> 
+        <td>{{ user.profile_user.document_number }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Nombres</th> 
+        <td>{{ user.first_name }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Apellidos</th> 
+        <td>{{ user.last_name }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Género</th> 
+        <td>{{ user.profile_user.get_gender_display }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Email</th> 
+        <td>{{ user.email }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Número de teléfono</th> 
+        <td>{{ user.profile_user.phone }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Forma de Pago</th> 
+        <td>{{ user.profile_user.get_payment_display }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Dirección</th> 
+        <td>{{ user.profile_user.address }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Ciudad</th> 
+        <td>{{ user.profile_user.get_city_display }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Cargo</th> 
+        <td>{{ user.profile_user.get_role_display }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Estado</th> 
+        <td>
+        {% if user.is_active is True %}
+        Activo
+        {% else %}
+        Inactivo
+        {% endif %}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </center>
+</div>
+
+{% endblock %}

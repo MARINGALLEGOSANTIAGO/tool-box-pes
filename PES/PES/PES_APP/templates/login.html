@@ -1,0 +1,95 @@
+{% extends "home_base.html"%}
+
+{% block title %} Inicio de Sesión {% endblock %}
+{% block container %}
+<br>
+<br>
+<br>
+<h2><div align ="left">               Iniciar sesión</div></h2>
+<HR width=100% align="center">
+<div class="row">
+        <div class="col-xs-6 col-md-4">
+        {% load static %}
+          <h3>Usuario</h3>
+          <img class="rounded-circle" src="{% static "img/man.png" %}" alt="Usuario" width="140" height="140"/>
+          <p>
+          <br>
+          <button class="btn btn-md btn-default" data-toggle="modal" data-target="#myModal">Inicio de sesión de usuario</button>
+          </p>
+          <p>Administra tus opciones de pago, revisa el historial de servicios y más.</p>
+          ¿No tienes cuenta?<a class="btn btn-link" href="{% url 'create_user' %}" role="button">Regístrate »</a>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-xs-6 col-md-4">
+        </div><!-- /.col-lg-4 -->
+        <div class="col-xs-6 col-md-4">
+          <h3>Trabajador</h3>
+          <img class="rounded-circle" src="{% static "img/labor-man.png" %}" alt="Usuario" width="140" height="140"/>
+
+          <p>
+          <br>
+          <button class="btn btn-md btn-default" data-toggle="modal" data-target="#myModal">Inicio de sesión de trabajador</button>
+          </p>
+          <p>Encuentra todo lo que necesitas para dar seguimiento a tu éxito al trabajar con nosotros.</p>
+        ¿No tienes cuenta?<a class="btn btn-link" href="{% url 'create_user_work' %}" role="button">Regístrate »</a>
+        </div><!-- /.col-lg-4 -->
+      </div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="container">
+        <div class="modal-dialog">
+                {% if error %}
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Cerrar</span>
+            </button>
+            <strong>Error:</strong> {{ error }}
+          </div>
+        {% endif %}   
+
+
+
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 class="modal-title" id="myModalLabel"><font color="black">Iniciar sesión</font></h3>
+            </div><!-- /.modal-header -->
+
+          <div class="modal-body">
+            <form class="form-signin" method="post">
+            {% csrf_token %}
+              <div class="form-group">
+                <div class="input-group input-group-sm">
+                  <input name="username" type="text" class="form-control" id="inputUsername" placeholder="Nombre de usuario" required autofocus>
+                  <label for="inputUsername" class="input-group-addon glyphicon glyphicon-user"></label>
+
+                </div>
+              </div> <!-- /.form-group -->
+              <div class="form-group">
+                <div class="input-group input-group-sm">
+                  <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Contrase&ntilde;a" required>
+                  <label for="inputPassword" class="input-group-addon glyphicon glyphicon-lock"></label>    
+                </div><!-- /.input-group -->
+              </div><!-- /.form-group -->
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> <font color="gray">Recordar</font>
+                </label>
+              </div> <!-- /.checkbox -->
+              <div class="modal-footer">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesión</button>
+              </div> <!-- /.modal-footer -->
+              <center class="m-t-1">
+                <a href="{% url 'restore_password' %}"><font color="black">¿Olvidaste tu cuenta?</a></font>
+              </center>
+            </form>
+
+          </div> <!-- /.modal-body -->
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.container -->
+</div><!-- /.modal -->
+
+{% endblock %}

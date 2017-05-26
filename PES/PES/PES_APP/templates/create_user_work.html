@@ -1,0 +1,614 @@
+{% extends "home_base.html"%}
+
+{% block title %} Crear Usuario {% endblock %}
+{% block container %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2><div align ="left">REGÍSTRATE PARA TRABAJAR CON NOSOTROS</div></h2></p>
+<HR width=100% align="center">
+  <div align ="center">
+      <h4>Bienvenido a TOOL BOX PES, gana una gran cantidad de dinero como contratista independiente. Obtén tu pago semanal por ayudar a nuestra comunidad de clientes a resolver sus problemas en el hogar u empresa alrededor de la ciudad. Sé tu propio jefe y obtén las tarifas por trabajar cuando tú quieras.</h4>
+  </div>
+{% if error %}
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span>
+  </button>
+  <strong>Error: {{ error }}</strong>
+</div>
+{% endif %}
+{% if message_error %}
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span>
+  </button>
+  <div class="font-weight-bold">Error:</div> {{ message_error }}
+</div>
+{% endif %}
+{% if message_success %}
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span>
+  </button>
+  {{ message_success }}
+</div>
+{% endif %}
+<br>
+<div class="row">
+  <form class="form-horizontal" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+          <label class="col-xs-4 control-label">Nombre de usuario</label>
+          <div class="col-xs-6">
+            <input name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:'' }}" type="text" class="form-control" placeholder="Nombre de usuario" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Tipo de Identificación</label>
+          <div class="col-xs-6">
+            <select class="form-control" data-live-search="true" name="{{ form.document_type.html_name }}" >
+            {% for value, text in form.fields.document_type.choices %}
+              <option value="{{ value }}"{% if form.fields.document_type.value == x %} selected{% endif %}>{{ text }}</option>
+            {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Número de identificación</label>
+          <div class="col-xs-6">
+            <input name="{{ form.document_number.html_name }}" value="{{ form.document_number.value|default_if_none:'' }}" type="text" class="form-control" placeholder="Número documento" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Nombres</label>
+          <div class="col-xs-6">
+            <input name="{{ form.first_name.html_name }}" value="{{ form.first_name.value|default_if_none:'' }}" type="text" class="form-control" placeholder="Nombres" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Apellidos</label>
+          <div class="col-xs-6">
+            <input name="{{ form.last_name.html_name }}" value="{{ form.last_name.value|default_if_none:'' }}" type="text" class="form-control" placeholder="Apellidos" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Contraseña</label>
+          <div class="col-xs-6">
+            <input name="{{ form.password.html_name }}" value="{{ form.password.value|default_if_none:'' }}" type="password" class="form-control" placeholder="Contraseña" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Repetir Contraseña</label>
+          <div class="col-xs-6">
+            <input name="{{ form.password.html_name }}" value="{{ form.password.value|default_if_none:'' }}" type="password" class="form-control" placeholder="Repetir Contraseña" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Género</label>
+          <div class="col-xs-6">
+            <select class="form-control" data-live-search="true" name="{{ form.gender.html_name }}" >
+            {% for value, text in form.fields.gender.choices %}
+              <option value="{{ value }}"{% if form.fields.gender.value == x %} selected{% endif %}>{{ text }}</option>
+            {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Email</label>
+          <div class="col-xs-6">
+            <input name="{{ form.email.html_name }}" value="{{ form.email.value|default_if_none:'' }}" type="email" class="form-control" placeholder="Email" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Teléfono</label>
+          <div class="col-xs-6">
+            <input name="{{ form.phone.html_name }}" value="{{ form.phone.value|default_if_none:'' }}" type="text" class="form-control" placeholder="Teléfono" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Dirección</label>
+          <div class="col-xs-6">
+            <input name="{{ form.address.html_name }}" value="{{ form.address.value|default_if_none:'' }}" type="text" class="form-control" placeholder="Dirección" >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Ciudad</label>
+          <div class="col-xs-6">
+            <select class="form-control" data-live-search="true" name="{{ form.city.html_name }}" >
+            {% for value, text in form.fields.city.choices %}
+              <option value="{{ value }}"{% if form.fields.city.value == x %} selected{% endif %}>{{ text }}</option>
+            {% endfor %}
+            </select>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Tipo de usuario</label>
+          <div class="col-xs-6">
+            <select class="form-control" data-live-search="true" name="{{ form.role.html_name }}" >
+            {% for value, text in form.fields.role.choices %}
+              <option value="{{ value }}"{% if form.fields.role.value == x %} selected{% endif %}>{{ text }}</option>
+            {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Está certificado?</label>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="checkboxWarning" name="certified">
+                <B>Si</B>
+              </label>
+            </div>
+          </div>
+        </div>
+
+<div class="form-group">
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th>Día</th>
+      <th><center>Está disponible?</center></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Lunes</th>
+      <td>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxWarning" name="availability_monday">
+              <B>Si</B>
+          </label>
+        </div>
+      </td>
+    </tr>
+    </div>
+
+    <tr>
+      <th scope="row">Martes</th>
+      <td>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxWarning" name="availability_tuesday">
+              <B>Si</B>
+          </label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Miércoles</th>
+      <td >
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxWarning" name="availability_wednesday">
+              <B>Si</B>
+          </label>
+        </div>
+      </td>
+
+    </tr>
+    <tr>
+      <th scope="row">Jueves</th>
+      <td>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxWarning" name="availability_thursday">
+              <B>Si</B>
+          </label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Viernes</th>
+      <td>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxWarning" name="availability_friday">
+              <B>Si</B>
+          </label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Sábado</th>
+      <td>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxWarning" name="availability_saturday">
+              <B>Si</B>
+          </label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Domingo</th>
+      <td>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxWarning" name="availability_sunday">
+              <B>Si</B>
+          </label>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+<!-- 
+
+
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Lunes</label>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="checkboxWarning" name="availability_monday">
+                <B>Si</B>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Martes</label>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="checkboxWarning" name="availability_tuesday">
+                <B>Si</B>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Miércoles</label>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="checkboxWarning" name="availability_wednesday">
+                <B>Si</B>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Jueves</label>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="checkboxWarning" name="availability_thursday">
+                <B>Si</B>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Viernes</label>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="checkboxWarning" name="availability_friday">
+                <B>Si</B>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Sábado</label>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="checkboxWarning" name="availability_saturday">
+                <B>Si</B>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Domingo</label>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="checkboxWarning" name="availability_sunday">
+                <B>Si</B>
+              </label>
+            </div>
+          </div>
+        </div>
+
+ -->
+
+<div class="form-group">
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th>Servicio</th>
+      <th><center>Lo trabaja?</center></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Cerrajería</th>
+      <td>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxWarning" name="service_ce">
+              <B>Si</B>
+          </label>
+        </div>
+      </td>
+    </tr>
+    </div>
+    </div>
+    <tr>
+      <th scope="row">Plomería</th>
+      <td>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxWarning" name="service_plo">
+              <B>Si</B>
+          </label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Carpintería</th>
+      <td >
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxWarning" name="service_car">
+              <B>Si</B>
+          </label>
+        </div>
+      </td>
+
+    </tr>
+    <tr>
+      <th scope="row">Electricidad</th>
+      <td>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxWarning" name="service_elec">
+              <B>Si</B>
+          </label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Jardinería</th>
+      <td>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxWarning" name="service_jar">
+              <B>Si</B>
+          </label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Pintura</th>
+      <td>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxWarning" name="service_pin">
+              <B>Si</B>
+          </label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Plagas</th>
+      <td>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxWarning" name="service_pla">
+              <B>Si</B>
+          </label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Techos</th>
+      <td>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxWarning" name="service_techo">
+              <B>Si</B>
+          </label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Paredes y Pisos</th>
+      <td>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="checkboxWarning" name="service_par">
+              <B>Si</B>
+          </label>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+     <!--    <div class="form-group">
+          <label class="col-xs-4 control-label">Cerrajería</label>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="checkboxWarning" name="service_ce">
+                <B>Si</B>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Plomería</label>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="checkboxWarning" name="service_plo">
+                <B>Si</B>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Carpintería</label>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="checkboxWarning" name="service_car">
+                <B>Si</B>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Electricidad</label>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="checkboxWarning" name="service_elec">
+                <B>Si</B>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Jardinería</label>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="checkboxWarning" name="service_jar">
+                <B>Si</B>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Pintura</label>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="checkboxWarning" name="service_pin">
+                <B>Si</B>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Plagas</label>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="checkboxWarning" name="service_pla">
+                <B>Si</B>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Techos</label>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="checkboxWarning" name="service_techo">
+                <B>Si</B>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Paredes y Pisos</label>
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="checkboxWarning" name="service_par">
+                <B>Si</B>
+              </label>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-xs-4 control-label">Estado</label>
+          <div class="col-xs-6">
+        <div class="has-warning">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" id="checkboxWarning" name="is_active" checked>
+              <B>¿Desea quedar habilitado para trabajar con nosotros?</B>
+            </label>
+          </div>
+        </div> -->
+
+        <br>
+
+      </div>
+      </div>
+
+        <div class="form-group">
+        <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-2">
+          <a class="btn btn-danger" href="{% url 'home' %}">
+          <span class="glyphicon glyphicon-remove"></span> Cancelar</a>
+        </button>
+        </div>
+        <div class="col-xs-7">  
+          <button class="btn btn-success" type="submit">
+          <span class="glyphicon glyphicon-share-alt"></span> CREAR CUENTA</button>
+          </div>
+
+    </form>
+</div>
+
+<script>
+$(function() {
+    $("#birthdate").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "dd/mm/yy",
+        showAnim: "slideDown",
+        yearRange: "-100:+0"
+    });
+});
+</script>
+{% endblock %}

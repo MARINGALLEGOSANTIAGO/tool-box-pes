@@ -1,0 +1,144 @@
+{% extends "home_base.html"%}
+
+{% block container %}
+<br>
+<br>
+<br>
+<br>
+
+          <div class="inner cover">
+          {% load static %}
+          <img src="{% static "img/TOOL-BOX-PES-FULL.png" %}" alt="Tool Box PES" width="200" height="200"/>
+            <br>
+            <br>
+            <p class="lead" align="center">Aquí encontrarás los servicios que necesita tu hogar u empresa.</p>
+
+<h2><div align ="left">Nuestros servicios</div></h2>
+<HR width=100% align="center">
+<div class="row">
+
+            <div class="col-md-6 col-xs-12 thumb">
+            {% if user.is_authenticated %}
+          <a class="thumbnail" href={% url 'request_service' %}>
+              <img class="img-responsive" src="{% static "img/electricista.jpg" %}" width="250" height="250" alt="electricista">
+          </a>
+          {% else %}
+        <a href={% url 'login_page' %} class="thumbnail">
+            <img class="img-responsive" src="{% static "img/electricista.jpg" %}" width="250" height="250" alt="electricista">
+        </a>
+        {% endif %}
+                <p class="card-text"><B>Servicio de ELECTRICISTA</B><p>¿Necesitas un electricista o servicio de electricidad? TOOL BOX PES lo envía. TOOL BOX PES ofrece cerrajeros en Pereira y Dosquebradas al mejor precio.</p></p>
+            </div>
+            <div class="col-md-6 col-xs-12 thumb">
+            {% if user.is_authenticated %}
+          <a class="thumbnail" href={% url 'request_service' %}>
+                    <img class="img-responsive" src="{% static "img/carpinteria.jpg" %}" width="250" height="250" alt="carpintero">
+                </a>
+          {% else %}
+        <a href={% url 'login_page' %} class="thumbnail">
+                    <img class="img-responsive" src="{% static "img/carpinteria.jpg" %}" width="250" height="250" alt="carpintero">
+                </a>
+        {% endif %}
+                <p class="card-text"><B>Servicio de CARPINTERIA</B><p>¿Necesitas un carpintero o servicio de carpintería? TOOL BOX PES lo envía. TOOL BOX PES ofrece cerrajeros en Pereira y Dosquebradas al mejor precio.</p></p>
+            </div>
+            </div>
+<div class="row">
+            <div class="col-md-6 col-xs-12 thumb">
+            {% if user.is_authenticated %}
+          <a class="thumbnail" href={% url 'request_service' %}>
+                    <img class="img-responsive" src="{% static "img/enchapador.jpg" %}" width="250" height="250" alt="enchapador">
+                </a>
+          {% else %}
+            <a href={% url 'login_page' %} class="thumbnail">
+              <img class="img-responsive" src="{% static "img/enchapador.jpg" %}" width="250" height="250" alt="enchapador">
+                </a>
+        {% endif %}
+                <p class="card-text"><B>Servicio de ENCHAPADORES</B><p>¿Necesitas enchapadores o servicio de enchape? TOOL BOX PES lo envía. TOOL BOX PES ofrece cerrajeros en Pereira y Dosquebradas al mejor precio.</p></p>
+            </div>
+            <div class="col-md-6 col-xs-12 thumb">
+            {% if user.is_authenticated %}
+          <a class="thumbnail" href={% url 'request_service' %}>
+                    <img class="img-responsive" src="{% static "img/cerrajero.jpg" %}" width="250" height="250" alt="cerrajero">
+                </a>
+          {% else %}
+              <a href={% url 'login_page' %} class="thumbnail">
+                <img class="img-responsive" src="{% static "img/cerrajero.jpg" %}" width="250" height="250" alt="cerrajero">
+                </a>
+        {% endif %}
+                <p class="card-text"><B>Servicio de CERRAJERIA</B><p>¿Necesitas un cerrajero o servicio de cerrajería? TOOL BOX PES lo envía. TOOL BOX PES ofrece cerrajeros en Pereira y Dosquebradas al mejor precio.</p></p>
+            </div>
+            <div class="col-md-6 col-xs-12 thumb">
+
+            {% if user.is_authenticated %}
+          <a class="thumbnail" href={% url 'request_service' %}>
+                    <img class="img-responsive" src="{% static "img/plomeria.jpg" %}" width="250" height="250" alt="plomero">
+                </a>
+          {% else %}
+              <a href={% url 'login_page' %} class="thumbnail">
+                <img class="img-responsive" src="{% static "img/plomeria.jpg" %}" width="250" height="250" alt="plomero">
+                </a>
+        {% endif %}
+                <p class="card-text"><B>Servicio de PLOMERIA</B><p>¿Necesitas un plomero o servicio de plomería? TOOL BOX PES lo envía. TOOL BOX PES ofrece cerrajeros en Pereira y Dosquebradas al mejor precio.</p></p>
+            </div>
+            <div class="col-md-6 col-xs-12 thumb">
+            {% if user.is_authenticated %}
+          <a class="thumbnail" href={% url 'request_service' %}>
+                    <img class="img-responsive" src="{% static "img/albanileria.jpg" %}" width="250" height="250" alt="albañil">
+                </a>
+          {% else %}
+            <a href={% url 'login_page' %} class="thumbnail">
+              <img class="img-responsive" src="{% static "img/albanileria.jpg" %}" width="250" height="250" alt="albañil">
+                </a>
+        {% endif %}
+                <p class="card-text"><B>Servicio de ALBAÑILERIA</B><p>¿Necesitas un albañil o servicio de albañilería? TOOL BOX PES lo envía. TOOL BOX PES ofrece cerrajeros en Pereira y Dosquebradas al mejor precio.</p></p>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-6 col-xs-12 thumb">
+
+            {% if user.is_authenticated %}
+          <a class="thumbnail" href={% url 'request_service' %}>
+                    <img class="img-responsive" src="{% static "img/fumigacion.jpg" %}" width="250250" height="250250" alt="fumigador">
+                </a>
+          {% else %}
+            <a href={% url 'login_page' %} class="thumbnail">
+              <img class="img-responsive" src="{% static "img/fumigacion.jpg" %}" width="250250" height="250250" alt="fumigador">
+                </a>
+        {% endif %}
+                <p class="card-text"><B>Servicio de FUMIGACION</B><p>¿Necesitas un técnico en fumigación o servicio de fumigación? TOOL BOX PES lo envía. TOOL BOX PES ofrece cerrajeros en Pereira y Dosquebradas al mejor precio.</p></p>
+            </div>
+
+            <div class="col-md-6 col-xs-12 thumb">
+            {% if user.is_authenticated %}
+          <a class="thumbnail" href={% url 'request_service' %}>
+                    <img class="img-responsive" src="{% static "img/pintura.jpg" %}" width="250250" height="250250" alt="pintor">
+                </a>
+          {% else %}
+            <a href={% url 'login_page' %} class="thumbnail">
+              <img class="img-responsive" src="{% static "img/pintura.jpg" %}" width="250250" height="250250" alt="pintor">
+                </a>
+        {% endif %}
+                <p class="card-text"><B>Servicio de PINTURA</B><p>¿Necesitas un pintor o servicio de pintura? TOOL BOX PES lo envía. TOOL BOX PES ofrece cerrajeros en Pereira y Dosquebradas al mejor precio.</p></p>
+            </div>
+            <div class="col-md-6 col-xs-12 thumb">
+
+            {% if user.is_authenticated %}
+          <a class="thumbnail" href={% url 'request_service' %}>
+                    <img class="img-responsive" src="{% static "img/jardineria.jpg" %}" width="250250" height="250250" alt="jardinero">
+                </a>
+          {% else %}
+            <a href={% url 'login_page' %} class="thumbnail">
+              <img class="img-responsive" src="{% static "img/jardineria.jpg" %}" width="250250" height="250250" alt="jardinero">
+                </a>
+        {% endif %}
+                <p class="card-text"><B>Servicio de JARDINERIA</B><p>¿Necesitas un jardinero o servicio de jardinería? TOOL BOX PES lo envía. TOOL BOX PES ofrece cerrajeros en Pereira y Dosquebradas al mejor precio.</p></p>
+            </div>
+            </div>
+            {% if user.is_authenticated %}
+          <a href={% url 'request_service' %} class="btn btn-lg btn-default">Solicitar Servicio</a>
+          {% else %}
+        <a href={% url 'login_page' %} class="btn btn-lg btn-default">Solicitar Servicio</a>
+        {% endif %}
+        <hr>
+    </div>
+{% endblock %}

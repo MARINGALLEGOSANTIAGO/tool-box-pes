@@ -1,0 +1,43 @@
+from django.conf.urls import url
+from . import views
+
+
+urlpatterns = [
+    url(r'^$', views.home, name="home" ),
+    #url(r'^registro/$', views.addRegister, name="register"),
+    url(r'^acerca/$', views.about_view, name="vista_about"),
+    url(r'^inicio_sesion/$', views.login_page, name="login_page" ),
+    url(r'^logout/$', views.logout_page, name="logout_page" ),
+    url(r'^reestablecer/$', views.restore_password, name="restore_password" ),
+    url(r'^reestablecer_aviso/$', views.restore_password_done, name="restore_password_done" ),
+    url(r'^crear_usuario/', views.create_user, name="create_user" ),
+    url(r'^crear_usuario_trabajador/', views.create_user_work, name="create_user_work" ),
+    url(r"^perfil_auxiliar/$", views.home_aux, name="home_aux"),
+    #url(r"^listar_usuarios/$", views.list_user, name="list_user"),
+    #url(r"^editar_usuario/(?P<id_user>[0-9]+)/$", views.edit_user, name="edit_user"),
+    #url(r"^eliminar_usuario/(?P<id_user>[0-9]+)/$", views.delete_user, name="delete_user"),
+    url(r"^perfil_usuario/$", views.home_user, name="home_user"),
+    url(r"^solicitar_servicio/$", views.request_service, name="request_service"),
+    url(r"^solicitar_servicio_aviso/$", views.request_service_done, name="request_service_done"),
+    #url(r"^listar_tutela/$", views.list_register, name="list_register"),
+    #url(r"^editar_tutela/(?P<id_register>[0-9]+)/$", views.edit_register, name="edit_register"),
+    url(r"^perfil_trabajador/$", views.home_work, name="home_work"),
+    # url(r"^admin_sitio/$", views.admin_site, name="admin_site"),
+    # url(r"^ayuda/$", views.help_site, name="help_site"),
+    # url(r"^consulta/$", views.check_failure, name="check_failure"),
+    # url(r"^lista_graficos/$", views.graphis_list, name="graphis_list"),
+    # url(r"^graficos/$", views.google_chart, name="google_chart"),
+    # url(r"^graficos_etnia/$", views.google_chart_ethnic, name="google_chart_ethnic"),
+    # url(r"^graficos_genero/$", views.google_chart_gender, name="google_chart_gender"),
+    # url(r"^graficos_condicion/$", views.google_chart_condition, name="google_chart_condition"),
+    # url(r"^graficos_regimen/$", views.google_chart_regimen, name="google_chart_regimen"),
+    # url(r"^graficos_representacion/$", views.googlecharts_in_respresentation, name="googlecharts_in_respresentation"),
+    # url(r"^graficos_entidad/$", views.googlecharts_entity, name="googlecharts_entity"),
+    # url(r"^graficos_eps/$", views.googlecharts_eps, name="googlecharts_eps"),
+    # url(r"^graficos_derechos_vulnerados/$", views.googlecharts_violated_right, name="googlecharts_violated_right"),
+    # url(r"^graficos_negacion_salud/$", views.googlecharts_denial_health, name="googlecharts_denial_health"),
+    # url(r"^graficos_concede_fallo/$", views.googlecharts_grants_failure, name="googlecharts_grants_failure"),
+    # url(r"^graficos_improcedente/$", views.googlecharts_improper_for, name="googlecharts_improper_for"),
+    # url(r"^graficos_repite_contra/$", views.googlecharts_repeat_against, name="googlecharts_repeat_against"),
+
+]

@@ -1,0 +1,66 @@
+{% extends 'base.html'%}
+
+
+{% block body %}
+        <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand"><a href="{% url 'home' %}">TOOL BOX PES</a></h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="{% url 'vista_about' %}">Nosotros</a></li>
+
+                {% if user.is_authenticated %}
+            
+                <li class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                  <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
+                  <span style="color:gray">Hola, </span><B><span style="color:black"> {{ user.username }}</span></B>
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <li><a href="
+                    {% if user.profile_user.role == "User" %}
+                    {% url 'home_user' %}
+                    {% elif user.profile.role == "Aux" %}
+                    {% url 'home_aux' %}
+                    {% elif user.profile.role == "Work" %}
+                    {% url 'home_work' %}
+                    {% endif %}">
+                    <center>Mi Perfil</center></a></li>
+                    <li><a href='{% url "logout_page" %}'>
+                    <center><span class="glyphicon glyphicon-log-out"></span> 
+                    Cerrar sesión</center></a>
+                    </li>
+                  </ul>
+                </li>
+                  {% else %}
+                  <li><a href="{% url 'login_page' %}"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesión</a></li>
+                  {% endif %}
+              </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="container_2">
+          {% block container %}
+            
+          {% endblock %}
+
+          </div><!-- /.container -->
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+{% endblock %}
+
+{% block js %}
+{% endblock %}
