@@ -1,1 +1,1 @@
-web: gunicorn PES_APP.wsgi
+web: gunicorn PES.wsgi
